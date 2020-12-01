@@ -47,7 +47,7 @@ func main() {
 	for i := 0; i < 5; i++ {
 		a = append(a, i)
 	}
-
+	fmt.Println(cap(a))
 	b := a
 	b = append(b, 5)
 	c := a
