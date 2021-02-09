@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // func main() {
 // 	var a []int // slice
 // 	for i := 0; i < 5; i++ {
@@ -42,18 +40,18 @@ import "fmt"
 // }
 
 //微妙なケース
-func main() {
-	var a []int
-	for i := 0; i < 5; i++ {
-		a = append(a, i)
-	}
-	fmt.Println(cap(a))
-	b := a
-	b = append(b, 5)
-	c := a
-	c = append(c, 6)
+// func main() {
+// 	var a []int
+// 	for i := 0; i < 5; i++ {
+// 		a = append(a, i)
+// 	}
+// 	fmt.Println(cap(a))
+// 	b := a
+// 	b = append(b, 5)
+// 	c := a
+// 	c = append(c, 6)
 
-	fmt.Printf("a: %v\n", a)
-	fmt.Printf("b: %v\n", b)
-	fmt.Printf("c: %v\n", c)
-}
+// 	fmt.Printf("a: %v\n", a)
+// 	fmt.Printf("b: %v\n", b)
+// 	fmt.Printf("c: %v\n", c)
+// }
