@@ -1,7 +1,5 @@
 package sort
 
-import "fmt"
-
 func QuickSort(arr []int) []int {
 	if len(arr) <= 1 {
 		return arr
@@ -26,7 +24,7 @@ func QuickSort(arr []int) []int {
 }
 
 //快读排序算法
-func main() {
-	arr := []int{1, 9, 10, 30, 2, 5, 45, 8, 63, 234, 12}
-	fmt.Println(QuickSort(arr))
-}
+// func main() {
+// 	arr := []int{1, 9, 10, 30, 2, 5, 45, 8, 63, 234, 12}
+// 	fmt.Println(QuickSort(arr))
+// }
