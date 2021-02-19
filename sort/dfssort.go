@@ -15,16 +15,16 @@ func (g *graph) addVertex(t int, s int) {
 	g.list[t] = push(g.list[t], s)
 }
 
-func main() {
-	g := NewGraph(8)
-	g.addVertex(2, 1)
-	g.addVertex(3, 1)
-	g.addVertex(7, 1)
-	g.addVertex(4, 2)
-	g.addVertex(5, 2)
-	g.addVertex(8, 7)
-	g.DfsSort()
-}
+// func main() {
+// 	g := NewGraph(8)
+// 	g.addVertex(2, 1)
+// 	g.addVertex(3, 1)
+// 	g.addVertex(7, 1)
+// 	g.addVertex(4, 2)
+// 	g.addVertex(5, 2)
+// 	g.addVertex(8, 7)
+// 	g.DfsSort()
+// }
 
 //创建图
 func NewGraph(v int) *graph {
