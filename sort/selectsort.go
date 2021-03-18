@@ -1,6 +1,6 @@
 package sort
 
-//获取切片里面的最大值
+//SelectMax 获取切片里面的最大值
 func SelectMax(arr []int) int {
 	length := len(arr)
 	if length <= 1 {
@@ -15,7 +15,7 @@ func SelectMax(arr []int) int {
 	return max
 }
 
-//切片排序
+//SelectSort 切片排序
 func SelectSort(arr []int) []int {
 	length := len(arr)
 	if length <= 1 {
