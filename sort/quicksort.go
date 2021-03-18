@@ -5,9 +5,9 @@ func QuickSort(arr []int) []int {
 		return arr
 	}
 	splitdata := arr[0]          //第一个数据
-	low := make([]int, 0, 0)     //比我小的数据
-	hight := make([]int, 0, 0)   //比我大的数据
-	mid := make([]int, 0, 0)     //与我一样大的数据
+	low := make([]int, 0)        //比我小的数据
+	hight := make([]int, 0)      //比我大的数据
+	mid := make([]int, 0)        //与我一样大的数据
 	mid = append(mid, splitdata) //加入一个
 	for i := 1; i < len(arr); i++ {
 		if arr[i] < splitdata {

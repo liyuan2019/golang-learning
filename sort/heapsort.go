@@ -1,10 +1,5 @@
 package sort
 
-//堆排序
-// func main() {
-//     arr := []int{1, 9, 10, 30, 2, 5, 45, 8, 63, 234, 12}
-//     fmt.Println(HeapSort(arr))
-// }
 func HeapSortMax(arr []int, length int) []int {
 	// length := len(arr)
 	if length <= 1 {
@@ -38,3 +33,9 @@ func HeapSort(arr []int) []int {
 	}
 	return arr
 }
+
+//堆排序
+// func main() {
+//     arr := []int{1, 9, 10, 30, 2, 5, 45, 8, 63, 234, 12}
+//     fmt.Println(HeapSort(arr))
+// }

@@ -26,7 +26,7 @@ func (g *graph) addVertex(t int, s int) {
 // 	g.DfsSort()
 // }
 
-//创建图
+//NewGraph 创建图
 func NewGraph(v int) *graph {
 	g := new(graph)
 	g.vertex = v
@@ -95,7 +95,7 @@ func (g *graph) DfsSort() {
 	visited := make([]bool, g.vertex+1)
 	visited[0] = true
 	for i := 1; i <= g.vertex; i++ {
-		if visited[i] == false {
+		if !visited[i] {
 			visited[i] = true
 			dfs(i, inverseList, visited)
 		}
@@ -105,7 +105,7 @@ func (g *graph) DfsSort() {
 
 func dfs(vertex int, inverseList map[int][]int, visited []bool) {
 	for _, w := range inverseList[vertex] {
-		if visited[w] == true {
+		if visited[w] {
 			continue
 		} else {
 			visited[w] = true

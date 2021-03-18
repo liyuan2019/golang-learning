@@ -15,7 +15,7 @@ trie树比较消耗内存：因为他没一层都保存一个字典表，就算�
 */
 
 type TrieNode struct {
-	value      int
+	// value      int
 	dictionary [26]*TrieNode
 }
 
@@ -23,16 +23,7 @@ type TrieTree struct {
 	root *TrieNode
 }
 
-func main() {
-	tree := createTree()
-	//fmt.Println(tree)
-	flag := tree.findWord("her")
-	fmt.Println(flag)
-	flag = tree.findWord("x")
-	fmt.Println(flag)
-}
-
-func createTree() TrieTree {
+func CreateTree() TrieTree {
 	arrList := []string{"how", "hi", "her", "hello", "so", "see"}
 	myTree := TrieTree{}
 	//添加跟节点
@@ -78,3 +69,12 @@ func (t *TrieTree) findWord(word string) int {
 	}
 	return 0
 }
+
+// func main() {
+// 	tree := createTree()
+// 	//fmt.Println(tree)
+// 	flag := tree.findWord("her")
+// 	fmt.Println(flag)
+// 	flag = tree.findWord("x")
+// 	fmt.Println(flag)
+// }

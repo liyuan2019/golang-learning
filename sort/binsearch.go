@@ -1,8 +1,9 @@
+//Package sort は
 package sort
 
 import "fmt"
 
-func bin_search(arr []int, finddata int) int {
+func BinSearch(arr []int, finddata int) int {
 	low := 0
 	high := len(arr) - 1
 	for low <= high {
