@@ -44,3 +44,78 @@ $ docker stop webserver
 #コンテナの起動 docker start コンテナ名
 $ docker start webserver
 ```
+*********************************************************
+# Dockerイメージの操作
+
+```shell
+#イメージのダウンロード
+$ docker image pull [オプション] イメージ名[:タグ名]
+```
+```shell
+#イメージ一覧表示
+# オプション　　　説明
+# -all, -a     すべてのイメージを表示
+# --digests    ダイジェストを表示するかどうか(摘要)
+# --no-trunc   結果をすべて表示する  
+# --quiet, -q  DockerイメージIDのみ表示
+$ docker image ls [オプション] [レポジトリ名]
+```
+```shell
+#DCT機能の有効化(ダウンロードする時イメージの検証)
+$ export DOCKER_CONTENT_TRUST=1
+```
+```shell
+#イメージの詳細確認
+$ docker image inspect [イメージ名]
+#--formatオプションで、JSON形式データ指定する
+$ docker image inspect --format="{{ .Os}}" nginx
+```
+```shell
+#イメージのタグ設定(イメージに別名をつける)
+# docker image tag [元イメージ名] [<Docker Hubのユーザー名>/イメージ名:タグ名]
+$ docker image tag nginx liyuan2021/webserver:1.0
+```
+```shell
+#イメージの検索
+# docker search [オプション] 検索キーワード
+# オプション　　　       説明
+# --no-trunc          結果をすべて表示する
+# --limit             n件の検索結果を表示する
+# --filter=stars=n    お気に入りの数(n以上)の指定
+$ docker search --filter=stars=1000 nginx
+```
+```shell
+#イメージの削除
+# docker image rm [オプション] [イメージ名/IMAGE ID]
+# [IMAGE ID]は先頭3桁程度でいいです
+#複数のイメージ名をスペーズで区切り
+# オプション　　　　説明
+# --force, -f    イメージを強制的に削除する
+# --no-prun      中間イメージを削除しない
+$ docker image rm -f b8c
+```
+```shell
+#未使用のDockerイメージを削除する
+#定期的に削除すると良い
+# docker image prune [オプション]
+# オプション　　　　　説明
+# --all, a         使用していないイメージをすべて削除
+# --force, -f      イメージを強制的に削除する
+$ docker image prune -a
+```
+```shell
+#Docker Hubへのログイン
+# docker login [オプション] [サーバ]
+# オプション            説明
+# --password, -p      パスワード
+# --usename, -u       ユーザー名
+$ docker login   
+```
+```shell
+#イメージのアップロード
+$ docker image push <Docker Hubユーザー名>/イメージ名:[タグ名]
+```
+```shell
+#Docker Hubからログアウト
+$ docker logout [サーバ名]
+```
