@@ -119,3 +119,49 @@ $ docker image push <Docker Hubユーザー名>/イメージ名:[タグ名]
 #Docker Hubからログアウト
 $ docker logout [サーバ名]
 ```
+*********************************************************
+# Dockerコンテナの操作
+```
+Dockerコンテナのライフサイクル
+コンテナ生成(docker container create)
+↓↓↓
+コンテナ生成/起動(docker container run)
+↓↓↓
+停止中コンテナ起動(docker container start)
+↓↓↓
+起動しているコンテナ停止(docker container stop)
+↓↓↓
+コンテナ削除(docker container rm)
+```
+
+```shell
+# コンテナ生成/起動
+# docker container run [オプション]　イメージ名[:タグ名] [引数]
+# オプション　　　　　　　説明
+# --attach, -a        標準入力(STDIN)/標準出力(STDOUT)/標準エラー出力(STDERR)にアタッチする
+# --cidfile           コンテナIDをファイルに出力する
+# --detach, -d        コンテナを生成し、バックグラウンドで実行する
+# --interactive, -I   コンテナの標準入力を開く
+# --tty, -t           端末デバイスを使う
+$ docker container run -it --name "test1" centos /bin/cal
+# -it コンソールに結果を出すオプション(-i -t)
+# --name コンテナ名
+$ docker container run -it --name "test2" centos /bin/bash
+# コンテナ内でシェルを実行する
+#exitでシェルを終了する
+```
+```shell
+#コンテナのバックグラウンド実行
+# docker container run [実行オプション]　イメージ名[:タグ名] [引数]
+# オプション　　　　　　　　　                                                     説明
+# --detach, -d                                                                バックグラウンドで実行する
+# --user, -u                                                                  ユーザー名を指定
+# --restart=[no | on-failure | on-failure:回数n | always | unless-stopped]     コマンドの実行結果によって再起動を行うオプション
+# --rm                                                                        コマンドを実行完了後にコンテナを自動で削除
+$ docker container run -d centos /bin/ping localhost
+```
+```shell
+#コンテナのログ確認
+#-tオプションでタイムスタンプを表示する
+$ docker container logs -t 4b47697516a7
+```
