@@ -165,3 +165,102 @@ $ docker container run -d centos /bin/ping localhost
 #-tオプションでタイムスタンプを表示する
 $ docker container logs -t 4b47697516a7
 ```
+```shell
+#コンテナのネットワーク設定
+# docker container run [ネットワークオプション] イメージ名[:タグ名] [引数]
+# オプション　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　説明
+# --add-host=[ホスト名:IPアドレス]　　　　　　　　　　　　　　　　　　　　コンテナの/etc/hostsにホスト名とIPアドレスを定義する
+# --dns=[IPアドレス]                                              コンテナ用DNSサーバのIPアドレス指定
+# --expose                                                       指定したレンジのポート番号を割り当てる
+# --mac-address=[MACアドレス]                                     コンテナのMACアドレスを指定する
+# --net=[bridge | none | container:<name | id> | host | NETWORK] コンテナのネットワークを指定する
+# --hostname, -h                                                 コンテナ自身のホスト名を指定する
+# --publish, -p[ホストのポート番号]:[コンテナのポート番号]              ホストとコンテナのポートマッピング
+# --publish-all, -P                                              ホストの任意のポートをコンテナに割り当てる
+$ docekr container run -d -p 8080:80 nginx
+$ docekr container run -d --dns 192.168.1.1 nginx
+$ docker container run -it --add-host test.com:192.168.1.1 centos
+```
+```shell
+#リソースを指定してコンテナを生成/実行
+# docker container run [リソースオプション] イメージ名[:タグ名] [引数]
+# オプション　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　説明
+# --cpu-shares, -C                                             CPUの使用配分(比率)
+# --memory, -m                                                 使用するメモリを制限して実行する(単位はb, k, m, gのいずれか)
+# --volume=[ホストのディレクトリ]:[コンテナのディレクトリ], -v        ホストとコンテナのディレクトリを共有
+$ docker container run --cpu-shares=512 --memory=1g centos
+#ディレクトリの共有
+$ docker container run -v /Users/li/webap:/usr/share/nginx/html nginx
+```
+```shell
+#コンテナを生成/起動する環境を指定
+# docker container run [環境設定オプション] イメージ名[:タグ名] [引数]
+# オプション　　　　　　　　　　　　　　　　　　説明
+# --env=[環境変数], -e                   環境変数を設定する
+# --env-file=[file名]　　　　　　         環境変数をファイルから設定する
+# --read-only=[true | false]            コンテナのファイルシステムを読み込む専用にする
+# --workdir=[パス], -W                   コンテナの作業ディレクトリを指定する
+# --user=[ユーザー名], -u                ユーザー名またUIDを指定する
+$ docker container run -it -e foo=bar centos /bin/bash
+#環境変数の一括設定
+$ docker container run -it --env-file=env_list centos /bin/bash
+#作業ディレクトリの設定
+$ docker container run -it -w=/tensorflow centos /bin/bash
+[root@92d9866d7956 tensorflow]# pwd
+/tensorflow
+```
+```shell
+#稼働コンテナ一覧表示
+# docker container ls [オプション]
+# オプション　　　　　　　　　　　説明
+# --all, -a                  起動中/停止中も含めいてすべてのコンテナを表示する
+# --filter, -f               表示するコンテナのフィルタリング
+# --format                   表示フォーマットを指定
+# --last, -n                 最後に起動されてからn件のコンテナのみ表示
+# --latest, -l               最後に起動されたコンテナのみ表示
+# --no-trunc                 情報を省略しないで表示する
+# --quiet, -q                コンテナIDのみ表示
+# --size, -s                 ファイルサイズの表示
+#起動中/停止中も含めいてすべてのコンテナを表示する
+$ docker container ls -a
+$ docker container ls -a -f name=test1
+$ socker container ls -a -f exited=0
+```
+```shell
+#コンテナの稼働状態確認
+$ docker container stats webserver
+#コンテナで動作しているプロセス確認
+$ docker container top webserver
+```
+```shell
+#コンテナの起動
+# オプション　　　　　　　　説明
+# --attach, -a         標準出力/標準エラー出力を開く
+# --interactive, -i    コンテナの標準入力を開く
+$ docker container start [オプション] コンテナ識別子
+```
+```shell
+#コンテナの停止
+# --time, -t コンテナの停止時間を指定する(デフォルトは10秒)
+#強制的にコンテナを停止する時は、docker container killを使います
+$ docker container stop -t 2 dbb4bbe0f470 
+```
+```shell
+#コンテナの再起動
+# --time, -t コンテナの再起動時間を指定する(デフォルトは10秒)
+$ docker container restart -t 2 webserver
+```
+```shell
+#コンテナの削除
+# オプション　　　　　　　　　　　　說明
+# --force, -f                 停止中のコンテナを強制的に削除する
+# --volumes, -v               割り当てたボリュームを削除する
+$ docker container rm webserver
+# 停止中の全てコンテナを削除するには
+$ docker container prune
+```
+```shell
+#コンテナの中断/再開
+$ docker container pause webserver
+$ docker container unpause webserver
+```
