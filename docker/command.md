@@ -345,3 +345,10 @@ $ docker container port webserver
 # コンテナの名前変更
 $ docker container rename old new
 ```
+```shell
+# コンテナ内のファイルをコピー
+# docker container cp コンテナ識別子:コンテナ内のファイルパス　ホストのディレクトリパス
+$ docker container cp webserver:/etc/nigix/niginx.conf /tmp/niginx
+# docker container cp ホストのファイル コンテナ識別子:コンテナ内のファイルパス
+$ docker container cp ./test.txt webserver:/tmp/test.txt
+```
