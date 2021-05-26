@@ -385,3 +385,18 @@ $ docker image import ファイルまたはURL - [イメージ名[:タグ名]]
 # -o オプション：保存するファイル名指定
 $ docker image save -o export.tar asashin/webserver:1.0
 ```
+```shell
+# イメージの読み込み,tarファイルからイメージを生成できます
+# -i オプション：読み込むファイル名の指定
+$ docker image load -i export.tar
+# 圧縮アーカイブでは、docker container exportコマンドで作成したものを読み込むと
+# きはdocker image importコマンド、docker image saveコマンドで生成したものを
+# み込むときはdocker image loadコマンドを使う
+```
+```shell
+# 不要なイメージ/コンテナを一括削除
+# オプション　　　　　　說明
+# -all, -a          使用していないリソースを全て削除する
+# --force, -f       強制的に削除する
+$ docker system prune [オプション]
+```
