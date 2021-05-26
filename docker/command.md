@@ -308,3 +308,40 @@ $ docker container run -itd --name=webap --net=web-network nginx
 #ネットワークからの切断
 $ docker network disconnect web-network webfront
 ```
+```shell
+#ネットワークの詳細確認
+$ docker container inspect [オプション]　ネットワーク
+```
+```shell
+#ネットワークの削除
+$ docker network rm [オプション] ネットワーク
+```
+# 稼働しているDockerコンテナの操作
+```shell
+# 稼働コンテナへ接続
+$ docker container attach コンテナ
+# 接続したコンテナごと終了させる時はCtrl+C(効かないみたい)
+# コンテナからデタッチする時はCtrl+P Ctrl+Q
+```
+```shell
+#稼働コンテナでプロセス実行
+# オプション　　　　　　說明
+# --detach, -d      コマンドをバックグラウンドで実行する
+# --interactive, -i コンテナの標準入力を開く
+# --tty, -t         false    tty(端末デバイス)を使う
+# --user, -u        ユーザー名指定
+$ docker container exec [オプション]　コンテナ　実行するコマンド [引数]
+$ docker container exec -it webserver /bin/echo "Hello world"
+```
+```shell
+#稼働コンテナのプロセス確認
+$ docker container top webserver
+```
+```shell
+#稼働コンテナのポート転送確認
+$ docker container port webserver
+```
+```shell
+# コンテナの名前変更
+$ docker container rename old new
+```
