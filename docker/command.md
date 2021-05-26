@@ -352,3 +352,27 @@ $ docker container cp webserver:/etc/nigix/niginx.conf /tmp/niginx
 # docker container cp ホストのファイル コンテナ識別子:コンテナ内のファイルパス
 $ docker container cp ./test.txt webserver:/tmp/test.txt
 ```
+```shell
+#コンテナ操作(コマンド)の差分(変更箇所)確認
+# 区分　　　　　說明
+# A　　　　　　ファイル追加
+# D          ファイル削除
+# C          ファイル更新
+$ docker container diff コンテナ識別子
+```
+# dockerイメージの作成
+```shell
+# コンテナからイメージ作成
+# オプション　　　　　說明
+# --author, -a     作成者を指定する
+# --message, -m    メッセージを指定する
+# --charge, -c     コミット時のDockerfile命令を指定
+# --pause, -p      コンテナを一時停止してコミットする
+# docker container commit [オプション] コンテナ識別子 [イメージ名[:タグ名]]
+$ docker container commit -a "ASA SHIN" webserver asashin/webserver:1.0
+```
+```shell
+#コンテナをtarファイル出力
+$ docker container export webserver > latest.tar
+$ tar -tf latest.tar |more
+```
