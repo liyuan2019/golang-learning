@@ -264,3 +264,14 @@ $ docker container prune
 $ docker container pause webserver
 $ docker container unpause webserver
 ```
+# Dockerコンテナのネットワーク
+```shell
+# ネットワーク一覧表示
+# オプション　　　　　　說明
+# -f, --filter=[]    出力をフィルタする
+# --no-trunc         詳細を出力する
+# -q, --quiet       ネットワークIDのみを表示する
+$ docker network ls [オプション]
+# 起動したDcokerコンテナの所属するネットワークを確認する
+$ docker container inspect コンテナ名
+```
