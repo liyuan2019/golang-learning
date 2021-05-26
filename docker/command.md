@@ -376,3 +376,12 @@ $ docker container commit -a "ASA SHIN" webserver asashin/webserver:1.0
 $ docker container export webserver > latest.tar
 $ tar -tf latest.tar |more
 ```
+```shell
+# tarファイルからイメージ作成
+$ docker image import ファイルまたはURL - [イメージ名[:タグ名]]
+```
+```shell
+# imageの保存(tarファイル出力)
+# -o オプション：保存するファイル名指定
+$ docker image save -o export.tar asashin/webserver:1.0
+```
