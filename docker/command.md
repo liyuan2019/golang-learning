@@ -296,3 +296,15 @@ $ docker network create --driver=bridge web-network
 $ docker network connect [オプション] ネットワーク コンテナ
 $ docker network connect web-network webfront
 ```
+```shell
+#コンテナのネットワーク確認
+$ docker container inspect コンテナ
+```
+```shell
+# ネットワークを指定したコンテナの起動
+$ docker container run -itd --name=webap --net=web-network nginx
+```
+```shell
+#ネットワークからの切断
+$ docker network disconnect web-network webfront
+```
