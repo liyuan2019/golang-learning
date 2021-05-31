@@ -39,3 +39,36 @@ Dockerfileだけでビルドに必要なファイルを含めることができ�
 $ docker build - < Dockerfile
 $ docker build - < docker.tar.gz
 ```
+## マルチステージビルド
+DockerにはアプリケーションをビルドするためのDockerイメージと、プロダクションで実際に動作させるDockerイメージを同時に作成できる機能があります。
+```
+FROM golang AS bulider
+```
+## RUN命令
+#### shell形式
+```
+RUN apt-get insall -y niginx
+```
+#### Exec形式
+シェルを介さず直接実行します。
+```shell
+RUN ["bin/bash","-c","apt-get install -y niginx"]
+```
+```
+# ベースイメージ設定
+FROM ubuntu:latest
+
+# RUN命令実行
+RUN echo "shell形式です"
+RUN ["echo","Exec形式です"]
+RUN ["bin/bash","-c","echo 'Exec形式でbashを使う'"]
+```
+Dockerfileをビルドすると、記述された１命令ごとに、内部イメージが１つ作成されます。そのため、Dockerfileの命令を減らす工夫がいくつあります。
+```
+RUN yum -y install\
+           httpd\
+           php\
+           php-mbstring\
+           php-pear
+
+```
