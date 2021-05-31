@@ -1,4 +1,4 @@
-# Dockerfileの基本構文
+## Dockerfileの基本構文
 ```
 命令　引数
 ```
@@ -23,3 +23,19 @@ Dockerfileの命令
 |HEALTHCHECK|コンテナのヘルスチェック|
 |SHELL|デフォルトシェルの設定|
 
+## ベースイメージ(FROM命令)
+```
+FROM [イメージ名]
+FROM [イメージ名]:[タグ名]
+FROM [イメージ名]@[ダイジェスト]
+```
+## DockerfileからDockerイメージの作成(docker build)
+```shell
+$ docker build -t [生成するイメージ名]:[タグ名] [Dockerfileの場所]
+```
+標準入力からのビルド
+Dockerfileだけでビルドに必要なファイルを含めることができないため、Dockerfileと必要なファイルをtarでまとめて標準入力から指定します。
+```shell
+$ docker build - < Dockerfile
+$ docker build - < docker.tar.gz
+```
